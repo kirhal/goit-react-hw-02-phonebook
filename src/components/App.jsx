@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-import Section from './phonebook/Section';
+import Section from './section/Section';
 import AddContacts from './phonebook/AddContacts';
 
 export class App extends Component {
@@ -14,12 +14,12 @@ export class App extends Component {
     evt.preventDefault();
     const form = evt.currentTarget;
     const nameValue = form.elements.name.value;
-    const www = {
+    const currentSubmit = {
       name: nameValue,
       id: nanoid(),
     };
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, www],
+      contacts: [...prevState.contacts, currentSubmit],
     }));
     form.reset();
   };

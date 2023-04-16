@@ -25,4 +25,4 @@ export default function AddContacts({ addContact }) {
   );
 }
 
-// AddContacts.propTypes = { title: PropTypes.string.isRequired };
+AddContacts.propTypes = { addContact: PropTypes.func.isRequired };
