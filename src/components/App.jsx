@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 
 import Section from './phonebook/Section';
 import AddContacts from './phonebook/AddContacts';
@@ -7,6 +8,20 @@ export class App extends Component {
   state = {
     contacts: [],
     name: '',
+  };
+
+  addContact = evt => {
+    evt.preventDefault();
+    const form = evt.currentTarget;
+    const nameValue = form.elements.name.value;
+    const www = {
+      name: nameValue,
+      id: nanoid(),
+    };
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, www],
+    }));
+    form.reset();
   };
 
   render() {
@@ -23,7 +38,7 @@ export class App extends Component {
         }}
       >
         <Section title="Phonebook">
-          <AddContacts />
+          <AddContacts addContact={this.addContact} />
         </Section>
         <Section title="Contacts"></Section>
       </div>
