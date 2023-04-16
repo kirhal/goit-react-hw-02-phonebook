@@ -33,7 +33,10 @@ export class App extends Component {
     form.reset();
   };
 
-  filterContacts = evt => {};
+  onFilterChange = evt => {
+    const filterValue = evt.currentTarget.value.toLowerCase();
+    this.setState({ filter: filterValue.trim() });
+  };
 
   render() {
     const { contacts, filter } = this.state;
@@ -53,8 +56,10 @@ export class App extends Component {
           <AddContacts addContact={this.addContact} />
         </Section>
         <Section title="Contacts">
-          <FilterContacts />
-          {contacts.lenght !== 0 && <RenderContacts contacts={contacts} />}
+          <FilterContacts changeFilter={this.onFilterChange} value={filter} />
+          {contacts.lenght !== 0 && (
+            <RenderContacts contacts={contacts} filter={filter} />
+          )}
         </Section>
       </div>
     );

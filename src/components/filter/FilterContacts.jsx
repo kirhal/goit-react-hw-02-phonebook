@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import css from './Filter.module.css';
 
-export default function FilterContacts({ contacts }) {
+export default function FilterContacts({ changeFilter, value }) {
   const findId = nanoid();
   return (
     <div className={css.filter}>
@@ -10,6 +10,8 @@ export default function FilterContacts({ contacts }) {
         Find contacts by name
       </label>
       <input
+        value={value}
+        onChange={changeFilter}
         type="text"
         name="filter"
         id={findId}
@@ -22,12 +24,7 @@ export default function FilterContacts({ contacts }) {
   );
 }
 
-// FilterContacts.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.exact({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     })
-//   ),
-// };
+FilterContacts.propTypes = {
+  changeFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string,
+};
