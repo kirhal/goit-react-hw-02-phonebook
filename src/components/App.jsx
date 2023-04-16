@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import Section from './section/Section';
 import AddContacts from './phonebook/AddContacts';
 import RenderContacts from './contacts/RenderContacts';
+import FilterContacts from './filter/FilterContacts';
 
 export class App extends Component {
   state = {
@@ -32,6 +33,8 @@ export class App extends Component {
     form.reset();
   };
 
+  filterContacts = evt => {};
+
   render() {
     const { contacts, filter } = this.state;
     return (
@@ -50,6 +53,7 @@ export class App extends Component {
           <AddContacts addContact={this.addContact} />
         </Section>
         <Section title="Contacts">
+          <FilterContacts />
           {contacts.lenght !== 0 && <RenderContacts contacts={contacts} />}
         </Section>
       </div>
