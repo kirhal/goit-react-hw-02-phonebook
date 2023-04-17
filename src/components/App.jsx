@@ -11,6 +11,8 @@ Notify.init({
   fontSize: '20px',
   width: '400px',
   position: 'top-center',
+  cssAnimationDuration: 500,
+  cssAnimationStyle: 'zoom',
 });
 
 export class App extends Component {
@@ -38,7 +40,7 @@ export class App extends Component {
       id: nanoid(),
     };
     if (this.checkOriginalNames(contacts, nameValue)) {
-      Notify.failure('❌ This contact already in');
+      Notify.failure(`❌ ${nameValue} is already in contacts list`);
     } else {
       this.setState(prevState => ({
         contacts: [...prevState.contacts, currentSubmit],

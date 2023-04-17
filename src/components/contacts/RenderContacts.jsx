@@ -3,29 +3,20 @@ import { nanoid } from 'nanoid';
 import css from './Contacts.module.css';
 
 export default function RenderContacts({ contacts, filter }) {
-  // console.log('render filter', filter);
   return (
     <ul className={css['contacts-list']}>
-      {filter ? filterContacts(contacts, filter) : originalContacts(contacts)}
+      {filter
+        ? mapContacts(filterContacts(contacts, filter))
+        : mapContacts(contacts)}
     </ul>
   );
 }
 
 function filterContacts(contacts, filter) {
-  console.log(filter);
-  const filteredArr = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter)
-  );
-  console.log(filteredArr);
-  return filteredArr.map(({ id, name, number }) => {
-    return (
-      <li key={id} className={css['contacts-list__item']}>
-        {name}: {number}
-      </li>
-    );
-  });
+  return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
 }
-function originalContacts(contacts) {
+
+function mapContacts(contacts) {
   return contacts.map(({ id, name, number }) => {
     return (
       <li key={id} className={css['contacts-list__item']}>
@@ -45,17 +36,3 @@ RenderContacts.propTypes = {
     })
   ),
 };
-// export default function RenderContacts({ contacts, filter }) {
-//   return (
-//     <ul className={css['contacts-list']}>
-//       {/* {filter ? } */}
-//       {contacts.map(({ id, name, number }) => {
-//         return (
-//           <li key={id} className={css['contacts-list__item']}>
-//             {name}: {number}
-//           </li>
-//         );
-//       })}
-//     </ul>
-//   );
-// }
