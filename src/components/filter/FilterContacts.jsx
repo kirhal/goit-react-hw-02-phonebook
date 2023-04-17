@@ -6,9 +6,7 @@ export default function FilterContacts({ changeFilter, value }) {
   const findId = nanoid();
   return (
     <div className={css.filter}>
-      <label htmlFor={findId} className={css[['filter-label']]}>
-        Find contacts by name
-      </label>
+      {/* <label htmlFor={findId} className={css[['filter-label']]}></label> */}
       <input
         value={value}
         onChange={changeFilter}
@@ -19,6 +17,7 @@ export default function FilterContacts({ changeFilter, value }) {
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
+        placeholder="Find contacts by name"
       />
     </div>
   );

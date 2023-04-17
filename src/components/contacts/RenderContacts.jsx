@@ -7,7 +7,6 @@ export default function RenderContacts({ contacts, filter, deleteContact }) {
       {filter
         ? mapContacts(filterContacts(contacts, filter), deleteContact)
         : mapContacts(contacts, deleteContact)}
-      {/* переробити на стрілочну */}
     </ul>
   );
 }
@@ -22,15 +21,15 @@ function mapContacts(contacts, func) {
       <li key={id} className={css['contacts-list__item']}>
         <span className={css['contacts-list__data']}>
           {name}: {number}
+          <button
+            type="button"
+            className={css['contacts-list__button']}
+            id={id}
+            onClick={func}
+          >
+            Delete
+          </button>
         </span>
-        <button
-          type="button"
-          className={css['contacts-list__button']}
-          id={id}
-          onClick={func}
-        >
-          Delete
-        </button>
       </li>
     );
   });
@@ -38,6 +37,7 @@ function mapContacts(contacts, func) {
 
 RenderContacts.propTypes = {
   filter: PropTypes.string,
+  deleteContact: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.string.isRequired,

@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import css from './Phonebook.module.css';
+import css from './AddContacts.module.css';
 
 export default function AddContacts({ addContact }) {
   const nameId = nanoid();
   const telId = nanoid();
   return (
     <form className={css.form} onSubmit={addContact}>
-      <label htmlFor={nameId} className={css['form-label']}>
-        Name
-      </label>
+      {/* <label htmlFor={nameId} className={css['form-label']}></label> */}
       <input
         type="text"
         name="name"
@@ -18,10 +16,9 @@ export default function AddContacts({ addContact }) {
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
+        placeholder="Write name"
       />
-      <label htmlFor={telId} className={css['form-label']}>
-        Number
-      </label>
+      {/* <label htmlFor={telId} className={css['form-label']}></label> */}
       <input
         type="tel"
         name="number"
@@ -30,6 +27,7 @@ export default function AddContacts({ addContact }) {
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
+        placeholder="Write number"
       />
       <button type="submit" className={css['form-button']}>
         Add contact

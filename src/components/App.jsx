@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import css from './App.module.css';
 
 import Section from './section/Section';
 import AddContacts from './phonebook/AddContacts';
@@ -74,17 +75,7 @@ export class App extends Component {
   render() {
     const { contacts, filter } = this.state;
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          // justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-          flexDirection: 'column',
-        }}
-      >
+      <div className={css.container}>
         <Section title="Phonebook">
           <AddContacts addContact={this.addContact} />
         </Section>
