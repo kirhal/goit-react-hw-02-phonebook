@@ -12,6 +12,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
+  border-bottom-style: solid;
   border-bottom-color: rgb(3, 25, 39);
 
   width: 60%;
