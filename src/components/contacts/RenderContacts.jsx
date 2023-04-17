@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 import css from './Contacts.module.css';
 
-export default function RenderContacts({ contacts, filter }) {
+export default function RenderContacts({ contacts, filter, deleteContact }) {
   return (
     <ul className={css['contacts-list']}>
       {filter
-        ? mapContacts(filterContacts(contacts, filter))
-        : mapContacts(contacts)}
+        ? mapContacts(filterContacts(contacts, filter), deleteContact)
+        : mapContacts(contacts, deleteContact)}
+      {/* переробити на стрілочну */}
     </ul>
   );
 }
@@ -16,11 +16,21 @@ function filterContacts(contacts, filter) {
   return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
 }
 
-function mapContacts(contacts) {
+function mapContacts(contacts, func) {
   return contacts.map(({ id, name, number }) => {
     return (
       <li key={id} className={css['contacts-list__item']}>
-        {name}: {number}
+        <span className={css['contacts-list__data']}>
+          {name}: {number}
+        </span>
+        <button
+          type="button"
+          className={css['contacts-list__button']}
+          id={id}
+          onClick={func}
+        >
+          Delete
+        </button>
       </li>
     );
   });

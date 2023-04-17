@@ -1,0 +1,14 @@
+.contacts-list__item {
+  font-size: 20px;
+}
+.contacts-list__data {
+  margin-right: 15px;
+  font-size: 20px;
+}
+.contacts-list__button {
+  cursor: pointer;
+}
+.contacts-list__button:hover {
+  background-color: rgb(50, 117, 206);
+  color: white;
+}

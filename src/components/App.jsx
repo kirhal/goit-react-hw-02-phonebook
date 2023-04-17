@@ -22,8 +22,8 @@ export class App extends Component {
       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      { id: 'id-5', name: 'Kiki Di', number: '333-91-26' },
-      { id: 'id-6', name: 'Liz Orlan', number: '256-34-85' },
+      { id: 'id-5', name: 'Kirlek Dizaered', number: '333-91-26' },
+      { id: 'id-6', name: 'Lizzi Orleans', number: '256-34-85' },
     ],
     filter: '',
   };
@@ -59,6 +59,17 @@ export class App extends Component {
       ({ name }) => name.toLowerCase() === contact.toLowerCase()
     );
   };
+  deleteContact = evt => {
+    const contacts = this.state.contacts;
+    const contactId = evt.currentTarget.id;
+    for (const contact of contacts) {
+      if (contact.id === contactId) {
+        const sad = contacts.indexOf(contact);
+        contacts.splice(sad, 1);
+        this.setState({ contacts: contacts });
+      }
+    }
+  };
 
   render() {
     const { contacts, filter } = this.state;
@@ -84,7 +95,11 @@ export class App extends Component {
                 changeFilter={this.onFilterChange}
                 value={filter}
               />
-              <RenderContacts contacts={contacts} filter={filter} />
+              <RenderContacts
+                contacts={contacts}
+                filter={filter}
+                deleteContact={this.deleteContact}
+              />
             </>
           )}
         </Section>
