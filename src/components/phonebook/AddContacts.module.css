@@ -27,7 +27,8 @@
   margin-top: 15px;
 }
 .form-input:focus {
-  border-color: rgb(66, 7, 7);
+  border-bottom-style: solid;
+  border-bottom-color: rgb(160, 14, 14);
 }
 
 .form-button {

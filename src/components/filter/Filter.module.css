@@ -23,5 +23,6 @@
   color: rgb(6, 41, 65);
 }
 .filter-input:focus {
-  border-color: rgb(66, 7, 7);
+  border-bottom-style: solid;
+  border-bottom-color: rgb(160, 14, 14);
 }
