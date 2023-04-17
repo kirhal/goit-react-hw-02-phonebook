@@ -5,7 +5,7 @@ import css from './App.module.css';
 
 import Section from './section/Section';
 import AddContacts from './phonebook/AddContacts';
-import RenderContacts from './contacts/RenderContacts';
+import MapContacts from './contacts/RenderContacts';
 import FilterContacts from './filter/FilterContacts';
 
 Notify.init({
@@ -63,13 +63,12 @@ export class App extends Component {
   deleteContact = evt => {
     const contacts = this.state.contacts;
     const contactId = evt.currentTarget.id;
-    for (const contact of contacts) {
-      if (contact.id === contactId) {
-        const sad = contacts.indexOf(contact);
-        contacts.splice(sad, 1);
-        this.setState({ contacts: contacts });
-      }
-    }
+    const newArr = contacts.filter(({ id }) => id !== contactId);
+    this.setState({ contacts: newArr });
+  };
+  filterContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
   };
 
   render() {
@@ -86,9 +85,8 @@ export class App extends Component {
                 changeFilter={this.onFilterChange}
                 value={filter}
               />
-              <RenderContacts
-                contacts={contacts}
-                filter={filter}
+              <MapContacts
+                filterContacts={this.filterContacts}
                 deleteContact={this.deleteContact}
               />
             </>
