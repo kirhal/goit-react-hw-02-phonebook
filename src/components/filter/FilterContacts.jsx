@@ -25,5 +25,5 @@ export default function FilterContacts({ changeFilter, value }) {
 
 FilterContacts.propTypes = {
   changeFilter: PropTypes.func.isRequired,
-  filter: PropTypes.string,
+  value: PropTypes.string,
 };

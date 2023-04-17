@@ -7,7 +7,6 @@ export default function AddContacts({ addContact }) {
   const telId = nanoid();
   return (
     <form className={css.form} onSubmit={addContact}>
-      {/* <label htmlFor={nameId} className={css['form-label']}></label> */}
       <input
         type="text"
         name="name"
@@ -18,7 +17,6 @@ export default function AddContacts({ addContact }) {
         required
         placeholder="Write name"
       />
-      {/* <label htmlFor={telId} className={css['form-label']}></label> */}
       <input
         type="tel"
         name="number"
